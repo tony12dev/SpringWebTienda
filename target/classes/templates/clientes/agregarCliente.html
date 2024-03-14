@@ -1,0 +1,63 @@
+
+<html xmnls="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Agregar</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="agregarCliente">
+            <div class="modal fade" id="agregarCliente" data-bs-backdrop="static" data-bs-keyboard="false"  aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title" id="staticBackdropLabel">Registro de Clientes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-light text-dark">
+                            <form th:action="@{/api/cliente/guardar}" method="POST" th:object="${cliente}">
+                                <div class="mb-3">
+                                    <label class="col-form-label">Nombre:</label>
+                                    <input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" required="true">
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label class="form-label">Apellido Paterno:</label>
+                                        <input type="text" class="form-control"  placeholder="Escribe tu apellido Paterno" name="apellidoP"   required="true" >
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Apellido Materno:</label>
+                                        <input type="text" class="form-control"  placeholder="Escribe tu apellido Materno"  name="apellidoM"  required="true" >
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Direccion:</label>
+                                    <input type="text" class="form-control"  placeholder="Escribe tu Direccion"  name="direccion"  required="true" >
+                                </div>
+                                <div class="row g-3"> 
+                                    <div class="col">
+                                        <label class="form-label">Correo:</label>
+                                        <input type="email" class="form-control"  name="email" placeholder="Escribe tu Email"  required="true" >
+                                    </div>
+
+                                    <div class="col">
+                                        <label class="form-label">Telefono:</label>
+                                        <input type="text" class="form-control"  name="telefono" placeholder="Escribe tu Telefono"   required="true" >
+                                    </div>
+                                </div> 
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button id="agregarCliente" type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="/js/Cliente.js"></script>
+    </body>
+</html>

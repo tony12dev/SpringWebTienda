@@ -1,0 +1,26 @@
+<section th:fragment = "Actualizar">
+    <div class="modal fade" id="ActualizarStock"  data-bs-backdrop="static"   aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Actualizar Stock</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> 
+                <form th:object="${producto}" method="Post"
+                      modelAttribute="producto">
+                    <input type="hidden" name="idProducto"  id="idProducto" th:value="producto.idProducto" th:field="*{idProducto}">
+                    <div class="modal-body">
+                        <div class="mb-1">
+                            <div class="texModal-Producto"><p id="nombreProducto"></p></div>  
+                            <input type="number" class="form-control"  th:field="*{existencia}" name="existencia" id="existenciaNueva" placeholder="Escribe la cantidad a agregar" required="true"> 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" onclick="Actualizar()" class="btn btn-primary">Agregar + Producto </button>
+                        </div>
+                    </div>   
+                </form>     
+            </div>
+        </div>
+    </div> 
+</section>

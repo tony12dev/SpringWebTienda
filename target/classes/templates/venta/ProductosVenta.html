@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <section th:fragment="ProductoVenta" >
+        <div  th:object="${producto}">
+            <div th:if="${producto != null}">
+                <div class=" alert alert-success alert-dismissible fade show m-0" role="alert">
+                    <form th:action="@{/api/venta/id}" th:object="${producto}" method="GET">
+                        <input type="hidden"  th:field="*{idProducto}">  
+                        <table class="table" style="width: 80%">
+                            <thead class="bg-dark text-white text-center">
+                                <tr>
+                                    <th>Producto</th> 
+                                <tr>                                                
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="container" style="font-size: 21px;">
+                                            <div class="row d-flex justify-content-center align-items-center">
+                                                <div class="col-md-4">  
+                                                    <p class="mb-0">Nombre:</p><p class="mt-0">[[${producto.nombre}]]</p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <a th:href="@{/assets/{filename}(filename=*{imagen})}" data-fancybox></a>
+                                                    <img th:src="@{/assets/{filename}(filename=*{imagen})}" class="img-thumbnail"
+                                                         th:alt="${producto.imagen}" style="width: 45%" height="auto" >
+                                                </div>
+                                                <div class="col-md-2">
+                                                    Precio:<p>
+                                                        <i class="fa-solid fa-dollar-sign"></i>
+                                                        [[${producto.precio}]]</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="number" id="cantidad" name="cantidad" class="form-control mt-2"  style="width: 100%;" placeholder="Ingrese la cantidad" required="true">
+                                                    <button class="btn btn-info mt-2" type="submit">Agregar a compra</button>
+                                                </div>
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>   
+                            </tbody>
+                        </table>
+                    </form>                         
+                </div> 
+            </div>
+            <div id="producto-ex" data-my-value="${existencia}"></div>
+            <div th:if="${producto == null}">
+
+            </div>
+            <div th:if="${producto == null and error != null}">               
+               
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        Swal.fire({
+                            title: "Solicitud inavalida",
+                            text: "EL prodocto No existe",
+                            icon: "info"
+                        });
+
+                    });
+                </script>
+
+            </div>
+            <div th:if="${stock != null }">
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        Swal.fire({
+                            title: "[[${stock}]]",
+                            text: "Tus Prodctos Existentes de [[${nombre}]] son: [[${existencia}]] pzs",
+                            icon: "info"
+                        });
+
+                    });
+                </script>
+            </div>
+            <div th:if="${producto == null and numero != null }">
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        Swal.fire({
+                            title: "Solicitud inavalida",
+                            text: "!No se Aceptan valores Negativos,Ni valores nulos!",
+                            icon: "info"
+                        });
+
+                    });
+                </script>  
+            </div>
+        </div>
+    </section>
+</html>

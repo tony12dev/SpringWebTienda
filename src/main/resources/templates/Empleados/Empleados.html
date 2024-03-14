@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="clientes/plantillas :: head"></head>
+    <body style="background-color: aquamarine">
+        <div>
+            <header th:fragment="header">
+                <nav class="navbar navbar-dark bg-menu">
+                    <div class="container-fluid">
+                        <a class="navbar-brand titulo-barra text-danger" th:href="@{/}">
+                            <img src="https://images.vexels.com/media/users/3/223366/isolated/preview/ea1356112df2010476093a06adc68532-dise-o-plano-de-icono-de-tienda.png" 
+                                 alt="" width="36" height="34" class="d-inline-block align-text-top">
+                            TIENDASPRING
+                        </a>
+                    </div>
+                </nav>
+            </header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 m-0">
+                        <section th:replace="index :: menu-lateral"></section>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="container-fluid" id="formclientes">
+                            <div class="row">
+                                <section th:replace="Empleados/AgregarEmpleado :: agregarEmpleado"></section>
+                                <section th:replace="Empleados/ListaEmpleados :: listaEmpleado"></section>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <footer th:replace="clientes/plantillas :: footer"></footer> 
+    </body>
+</html>

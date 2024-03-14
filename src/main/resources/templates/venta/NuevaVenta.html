@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="clientes/plantillas :: head"></head>    
+    <body>
+        <header th:replace="producto :: header"></header>
+        <header th:replace="clientes/plantillas :: plantillaSimbolos"></header>
+        <section th:replace="venta\MenuVenta ::  menuVenta"></section> 
+        <div class="tituloventa"><h1>Nueva Venta</h1></div>
+        <div class="col-md-12 col-sm-12 col-xl-12">
+            <div class="BusquedaVenta">
+                <form th:action="@{/api/venta/producto}" th:object="${producto}" method="GET">               
+                    <div class="buscar-producto">
+                        BuscarProducto:
+                        <input  class="inputBusqueda form-control" type="text" required="true" id="nombre" name="nombre" placeholder="Nombre Producto" >
+                            <button type="submit" class="button-producto ">
+                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                            </button>                       
+                    </div>                
+                    <ul id="lista-Productos" >
+                        <th:block th:each="producto : ${listaproductos}">
+                            <li>
+                                <a th:href="@{/api/venta/producto?nombre=} + ${producto.nombre}"><i class="fa-solid fa-magnifying-glass"></i>
+                                    [[${producto.nombre}]]</a></li>
+                        </th:block>
+                    </ul>     
+                </form>
+            </div>
+        </div>    
+        <section th:replace="venta\ProductosVenta :: ProductoVenta"></section>
+        <section th:replace="venta\TablaVenta :: tablaVenta"></section>
+
+        <button class="btn btn-danger" onclick="CancelarVenta()">Cancelar Venta</button> 
+        <div class="d-grid gap-2 col-md-4 mt-2 mx-auto">
+            <a class="btn btn-success" th:href="@{/api/venta/factura}">Requiere Factura</a>
+        </div> 
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/ScriptVenta.js}"></script>
+        <script th:src="@{/js/buscador.js}"></script>
+        <footer th:replace="clientes/plantillas :: footer"></footer> 
+    </body>
+</html>

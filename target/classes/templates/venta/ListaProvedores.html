@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="clientes/plantillas :: head"></head> 
+    <body>
+        <header th:replace="producto :: header"></header>
+        <header th:replace="clientes/plantillas :: plantillaSimbolos"></header>
+        <section th:replace="venta\MenuVenta ::  menuVenta"></section> 
+        <div class="container">
+            <div class="row text-center mt-2">
+                
+                <a th:href="@{/api/venta}" class=" btn btn-info btn-lg">Realizar Venta</a>
+            </div>
+        </div>
+        <section th:replace="provedor/listaProvedor :: ListaProvedor">           
+        </section>
+        <script th:src="@{/js/Moneda.js}" th:inline="javascript"></script>
+    </body>
+</html>
+

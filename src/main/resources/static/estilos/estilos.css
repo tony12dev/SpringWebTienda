@@ -1,0 +1,365 @@
+
+/* 
+    Created on : 26 jun. 2023, 18:45:10
+    Author     : tonny
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&family=Roboto+Slab:wght@500&display=swap');
+
+body{
+    background-image: url(../image/fondotienda.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-menu{
+    background-color: #0b100c;
+}
+
+.titulo-barra{
+    font-family: initial;
+    font-size: 22px;
+
+}
+.butadd-provedor{
+    border: solid #000000;
+    background-color: aliceblue;
+    color: black;
+}
+
+
+.butadd-provedor:hover{
+    font-size: 16.5px;
+    color: black;
+    font-weight: bold;
+    border: solid #000000;
+}
+
+icon-provedor:hover{
+    font-size: 21px;
+    color: white;
+}
+
+.titulo-clientes{
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 55px;
+    color: black;
+
+}
+
+.Titulo-Detalle-Producto{
+    background-color: #8d098d;
+    border: 2px solid #000;
+}
+
+.Titulo-Detalle-Producto h3{
+    font-size: 42px;
+    font-family: unset;
+}
+
+.producto-detalle{
+    border: 1px solid #000000;
+    padding: 18.5px 12px;
+    font-size: 24px;
+    font-family: 'Roboto Slab ,serif';
+    font-weight: bold;
+}
+
+.imagen-nombre{
+    padding: 1px 3px;
+    background-color: #e2d9e5;
+    border: 1px solid #000000;
+    font-size: 26px;
+    font-family: 'Roboto Slab, serif';
+    text-align: center;
+    color: black;
+    margin-top: 20px;
+}
+
+.texModal-Producto{
+    font-size: 20px;
+    font-family: 'Roboto Slab serif';
+    color: black;
+    font-weight: bold;
+
+}
+.celda-exsitencia{
+    width: 70px;
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left;
+}
+.celda-exsitencia2{
+    width: 60px;
+    margin-right: 0;
+    padding-right: 0;
+    text-align: right;
+}
+.navbar-venta{
+    width: 100%;
+    padding: 20px 50px;
+    background-color: #011;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: -2;
+}
+
+.navbarMenu-venta a{
+    display: block;
+    font-size: 1.3rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 10px
+
+}
+
+@media(min-width: 768px) {
+
+    /*Hacerlo responsivo para table telefono, escritorio*/
+    .navbar-venta a {
+        display: inline-block;
+        font-size: 1.6rem;
+        text-align: center;
+        position: relative;
+        margin-left: 80px;
+        margin-right: 60px;
+        margin-top: -30px;
+    }
+}
+
+@media(min-width: 768px) {
+
+    /*Hacerlo responsivo para table telefono, escritorio*/
+    .navbar-venta {
+        padding: 15px 40px;
+    }
+}
+
+.navbarMenu-venta a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 4px;
+    background-color:#f3faf1;
+    border-radius: 6px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform ease .6s;
+}
+
+
+
+.navbarMenu-venta a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.itemVenta:hover i{
+    cursor: pointer;
+    color: #f10f05;
+}
+
+.tituloventa{
+    position: relative;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.BusquedaVenta{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    font-size: 23px;
+    padding: 12px 10px;
+}
+.buscar-producto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputBusqueda{
+    flex-grow: 1;
+    width: 450px;
+    border: none;
+    height: 100%;
+    font-size: 25px;
+    background-color: #eee;
+    border-radius: 36px 0 0 36px;
+    padding: 7px 16px;
+    margin-left: 3px;
+}
+
+
+
+.button-producto{
+    width: 60px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 36px 36px 0;
+    background-color: #d51515;
+    color: #d5fff1;
+    margin: 0;
+}
+
+.table-venta{
+    display: flex;
+    width: 100%;
+}
+.table-venta table{
+    width: 75%;
+}
+.total-venta{
+    flex-grow: 1;
+}
+
+
+.bg-table-venta{
+    background-color: #fff9e4;
+    color: #000;
+}
+.celda-precio{
+    width: 12%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.celda-simbolo{
+    position: relative;
+    width: 10%;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.image-w{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+}
+
+.image-d{
+    width: 65%;
+    height: 80%;
+    padding: 5px;
+}
+
+.image-detalle{
+    width: 90%;
+    height: 80%;
+    padding: 20px;
+}
+.img-modificar {
+    width: 300px;
+    height: 85%;
+    padding: 10px 0;
+    margin: auto;
+
+}
+
+#lista-Productos{
+    position: fixed;
+    background-color: white;
+    top: 250px;
+    left: 29.5%;
+    transform: translateX(-50.5%);
+    width: 450px;
+    z-index: 8;
+    display: none;
+    border-radius: 25px 0 0 0;
+
+}
+
+
+ul li{
+    display: block;
+    list-style: none;
+    padding-left: 0;
+    font-size: 17px;
+    transform: translateX(-5%);
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+ul li i{
+    font-size: 17px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #e7e4e4;
+}
+
+ul li:hover{
+    background: #f3f3f3;
+
+}
+
+#precio{
+    display: inline;
+}
+
+.colorblack{
+    background-color: #000;
+}
+.nav-tituto{
+    margin-bottom: 0px;
+}
+.facturaBusqueda{
+    display: flex;
+}
+.facturaBusqueda button{
+    margin: 0px;
+    padding: 3px 16px 3px 0px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 0 25px 25px 0;
+  
+ }
+
+.facturaBusqueda button .lupa {
+    font-size: 23px;
+    padding-left: 8px;
+    padding-right: 2px;
+}
+
+.facturaBusqueda button:hover{
+    background-color: #469cd1;
+}
+
+.facturaBusqueda button .lupa:hover{
+  font-size: 28px;
+}
+
+.cliente-factura{
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: "Gill Sans Extrabold", sans-serif;
+    border-style: double;
+    
+}
+
+.boton-arrow{
+    font-size: 21px;
+    font-family: 'Roboto Slab ,serif';
+    margin-left: 55px;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.boton-arrow i {
+    font-size: 20px;
+}

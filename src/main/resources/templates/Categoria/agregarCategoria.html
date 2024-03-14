@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section th:fragment="agregarCategoria">
+            <div class="modal fade" id="agregarCategoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title" id="staticBackdropLabel">Agregar Categoria</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form th:action="@{/api/category/Guardar}" method="POST">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombre">Nombre:</label>
+                                    <input name="nombre" class="form-control" placeholder="Escribe tu Nombre" required>
+                                </div>
+                            </div> 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

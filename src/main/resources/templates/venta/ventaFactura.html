@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+    <section th:fragment="ProductosVenta">
+        <div th:if="${listaProducto != null and !listaProducto.empty}">
+        <table class="table text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th colspan="3">Importe</th>
+                    
+                </tr>              
+            </thead>
+            <tbody class="bg-white text-dark ">
+                <tr th:each="producto,cont : ${listaProducto}">
+                    <td>[[${cont.count}]]</td>
+                    <td style="width: 40%;">[[${producto.nombre}]]</td>
+                    <td>[[${producto.existencia}]]</td>
+                    <td><i class="fa-sharp fa-light fa-dollar-sign"></i>
+                        [[${producto.precio}]]
+                    </td>
+                    <td class="celda-simbolo"><i class="fa-sharp fa-light fa-dollar-sign"></i></td>
+                    <td class="celda-precio px-0">
+                        [[${producto.precio * producto.existencia}]]   
+                    </td>
+                </tr>
+            </tbody> 
+        </table>
+            </div>
+        <div th:if="${listaProducto == null or listaProducto.empty}">
+            <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th colspan="3">Importe</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>              
+            </thead>
+                <tbody>
+                    <tr>
+                        <td>No hay productos</td>
+                    </tr> 
+                </tbody> 
+            </table> 
+        </div>
+    </section>
+
+
+</html>

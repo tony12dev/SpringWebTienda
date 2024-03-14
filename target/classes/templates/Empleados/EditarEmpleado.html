@@ -1,0 +1,40 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <div class="mb-3">
+                <label>Nombre</label>
+                <input class="form-control" name="nombre" type="text" placeholder="Escribe tu nombre" required="true">
+            </div>
+            <div class="mb-3">
+                <label>Apellidos</label>
+                <input class="form-control" name="apellidos" type="text" placeholder="Escribe tus Apellidos" required="true">
+            </div>
+            <div>
+                <label>Correo</label>
+                <input class="form-control" name="correo" type="email" placeholder="Escribe tu email" required="true">
+            </div>
+            <div class="mb-3">
+                <label>rfc</label>
+                <input class="form-control" name="rfc" type="text" placeholder="Escribe tu nombre" required="true">
+            </div>
+            <div class="mb-3">
+                <label>Rol</label>
+                <select  class="form-select" th:field="*{rol}" aria-label="Default select example" required="true">
+                    <option value="" selected >Abre este menú select</option>
+                    <th:block th:each="rol : ${roles}">
+                        <option th:value="${rol.idRol}"
+                                th:text="${rol.nombre}">
+                        </option>
+                    </th:block>
+                </select>
+            </div>
+        </form>
+
+    </body>
+</html>

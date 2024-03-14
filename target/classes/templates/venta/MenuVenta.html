@@ -1,0 +1,27 @@
+<section th:fragment="menuVenta" class="navbar-venta colorblack">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark m-0">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenubar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navMenubar">
+                        <div class="navbar-nav colorblack">
+                            <nav  class="navbarMenu-venta"> 
+                                <a class="itemVenta"   th:href="@{/api/venta/ListaProductos}">
+                                    <i class="fa-brands fa-product-hunt"></i>Productos</a>
+                                <a class="itemVenta"  th:href="@{/api/venta/listaProvedores}">
+                                    <i  class="fa-solid fa-truck-arrow-right"></i>Provedor</a>
+                                <a class="itemVenta"  href="#">
+                                    <i class="fa-solid fa-user"></i>Cliente</a>
+                                <a  class="itemVenta" href="#">
+                                    <i class="fa-solid fa-user-tie"></i>Empleado</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>  
+            </nav>
+        </div> 
+    </div> 
+</section>  

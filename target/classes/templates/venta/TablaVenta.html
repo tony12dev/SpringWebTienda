@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <section th:fragment="tablaVenta">
+        <div class="container-fluid"> 
+            <div class="row">
+                <div class="col-md-7 m-0">
+                    <table class="table text-center" id="venta">
+                        <thead class="bg-dark text-white ">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>precio</th>
+                                <th colspan="3">Subtotal</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-table-venta" id="tablaventa">
+                            <tr th:each="producto,cont : ${productos}"> 
+                                <td>[[${cont.count}]]</td>
+                                <td id="productoName">[[${producto.nombre}]]</td>
+                                <td>[[${producto.existencia}]]</td>
+                                <td><i class="fa-sharp fa-light fa-dollar-sign"></i>
+                                    [[${producto.precio}]]
+                                </td>
+                                <td class="celda-simbolo"><i class="fa-sharp fa-light fa-dollar-sign"></i></td>
+                                <td class="celda-precio px-0">
+                                    [[${producto.precio * producto.existencia}]]   
+                                </td>
+                                <td class="px-0">
+                                    <a  style=" cursor: pointer"
+                                       th:data-idProducto="${producto.idProducto}" 
+                                       th:data-nombre="${producto.nombre}"
+                                       onclick="EliminarProductoVenta(this)">
+                                        <i class="fa-sharp fa-solid fa-trash fs-5 " style="color: red"></i>
+                                    </a>
+                                    
+                                    <a  style=" cursor: pointer"
+                                       th:data-ProductoId="${producto.idProducto}" 
+                                       th:data-Producto="${producto.nombre}"
+                                       onclick="ActualizarVenta(this)">
+                                        <i class="fa-sharp fa-solid fa-cart-plus fs-5 " style="color:   #0033cc"></i>
+                                    </a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header bg-danger text-center text-dark">
+                            <h3><i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                                Total Venta</h3>
+                        </div>
+                        <div class="card-body bg-light" id="total">
+                            <div id="subtotal" class="text-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-md-6 mx-auto">
+                        <a th:href="@{/api/venta(format=pdf)}" target="_blank" 
+                           class="btn btn-primary float-right mt-2" id="limpiar">
+                            <i class="fa-solid fa-file-lines"></i>
+                            CREAR TICKET</a>   
+                    </div>   
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/js/EliminaProductoVenta.js}"></script>
+        <script th:src="@{/js/ActualizarVenta.js}"></script>
+    </section> 
+</html>

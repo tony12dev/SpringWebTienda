@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="clientes/plantillas :: head"></head>    
+    <body>
+        <header th:replace="clientes/plantillas :: plantillaSimbolos"></header>
+        <div class="text-center">
+            <h3>Modificar Producto</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <form th:action="@{/api/producto/actualizar}" enctype="multipart/form-data"
+                          th:object="${producto}" method="POST"> 
+                        <input type="hidden" name="idCliente" th:field="*{idProducto}"/>
+                        <div class="mb-3">
+                            <label>Nombre</label>
+                            <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Escribe tu nombre" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>contenidoNeto</label>
+                            <input type="text" name="contenido_neto" th:field="*{contenidoNeto}" class="form-control" placeholder="Escribe el contenido" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>fechaCaducidad</label>
+                            <input type="date" name="fecha_caducidad" th:field="*{fechaCaducidad}" class="form-control" placeholder="Escribe tu nombre"  required="true" > 
+                        </div>
+                        <div class="mb-3">
+                            <label>Descripcion</label>
+                            <input type="text" name="descripcion" th:field="*{descripcion}" class="form-control" placeholder="descripcion" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>Precio</label>
+                            <input type="number" name="precio" th:field="*{precio}" class="form-control" step="0.01" placeholder="Escribe el precio" required="true">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Exitencias</label>
+                            <input type="number" name="existencia" th:field="*{existencia}"  class="form-control" placeholder="Escribe la cantidad" required="true">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Provedor</label>
+                            <select class="form-select" name="id_provedor" th:field="*{provedor}"  aria-label="Default select example" required="true">
+                                <option value="" selected >Abre este menú select</option>
+                                <th:block th:each="provedor : ${provedores}">
+                                    <option th:value="${provedor.idProvedor}"
+                                            th:text="${provedor.nombre}">                                                  
+                                    </option>
+                                </th:block>
+                            </select> 
+                        </div>
+                        <div class="mb-3">
+                            <label>Categoria</label>
+                            <select class="form-select" name="id_categoria" th:field="*{categoria}"   aria-label="Default select example" required="true">
+                                <option value="" selected >Abre este menú select</option>
+                                <th:block th:each="categoria : ${categoria}">
+                                    <option th:value="${categoria.idCategoria}"
+                                            th:text="${categoria.nombre}">                                                  
+                                    </option>
+                                </th:block>
+                            </select> 
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success btn-lg">
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 mt-2  py-2 text-center bg-light " >
+                    <div th:if="${mensaje != null}">
+                        <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                            <use xlink:href="#check-circle-fill"/></svg>
+                            [[${mensaje}]]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
+                        </div> 
+                    </div>
+         
+                    <section th:replace="productos/modificarImagen :: modificaimagen">
+                        
+                    </section>
+                </div>
+
+            </div>
+        </div>         
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-securyti">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section th:fragment="clientes">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpzoJCTomC3T0QAZ-2qx0erDAQd4xFRKwMA&usqp=CAU"
+                             class="img-fluid rounded-start" alt="clientes">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes</h5>
+                            <p class="card-text"><small class="text-muted">Regiatro Clientes</small></p>
+                        </div>
+                        <div class="d-grid gap-2 m-2">
+                            <a class="btn btn-primary" th:href="@{/api/cliente}" type="button">IR A CLIENTES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- empleados --> 
+        <section th:fragment="empleados">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830573.png"
+                             class="img-fluid rounded-start" alt="empleados">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Empleados</h5>
+                            <p class="card-text"><small class="text-muted">Registro de empleados</small></p>
+                        </div>
+                        <div class="d-grid gap-2 m-2">
+                            <a class="btn btn-primary" th:href="@{/api/empleado}" type="button">IR A EMPLEADOS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Productos -->
+        <section th:fragment="productos">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1312/1312307.png"
+                             class="img-fluid rounded-start" alt="Productos">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Productos</h5>
+                            <p class="card-text"><small class="text-muted">Regiatro Productos</small></p>
+                        </div>
+                        <div class="d-grid gap-2 m-2">
+                            <a class="btn btn-primary" th:href="@{/api/producto}" onclick="Seleccionar2()"  type="button">IR A Productos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--provedor-->
+        <section th:fragment="provedor">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://img.lovepik.com/free-png/20210928/lovepik-truck-png-image_401708389_wh1200.png"
+                             class="img-fluid rounded-start" alt="Provedores">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Provedor</h5>
+                            <p class="card-text"><small class="text-muted">Registro de Provedores</small></p>
+                        </div>
+                        <div class="d-grid gap-2 m-2">
+                            <a class="btn btn-primary" th:href="@{/api/provedor}" onclick="Seleccionar2()"  type="button">IR A Provedor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!--ventas--> 
+        <section th:fragment="venta">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://cdn.icon-icons.com/icons2/210/PNG/256/shopping-basket-add256_24909.png"
+                             class="img-fluid rounded-start" alt="Productos">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ventas</h5>
+                            <p class="card-text"><small class="text-muted">Regiatro de Ventas</small></p>
+                        </div>
+                        <div class="d-grid gap-2 m-2">
+                            <a class="btn btn-primary" th:href="@{/api/venta}" type="button">IR A Nueva venta</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

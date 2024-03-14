@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">       
+    </head>
+    <body>
+        <section th:fragment="ListaProvedor">
+            <h1 class="text-center">PORVEDORES</h1>
+            <div>
+                <div class="d-grid gap-2 col-6  mb-2">
+                    <a class="btn btn-outline-info  butadd-provedor mb-2" href="${/api/provedor/agregar}"
+                       data-bs-toggle="modal" data-bs-target="#agregarProvedor">
+                        <i class="fa-solid fa-truck-field-un icon-provedor"></i>
+                        AGREGAR PROVEDOR
+                    </a>
+                </div>
+            </div>
+            <div th:if="${provedores != null and !provedores.empty}">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="provedor,cont: ${provedores}">
+                            <td>[[${cont.count}]]</td>
+                            <td>[[${provedor.nombre}]]</td>
+                            <td>[[${provedor.direccion}]]</td>
+                            <td>[[${provedor.telefono}]]</td>
+                            <td>[[${provedor.email}]]</td>
+                            <td>
+                                <a th:href="@{/api/provedor/editar/} + ${provedor.idProvedor}"
+                                   class="btn btn-success">
+                                    Modificar</a>
+                                <a href="#"
+                                   class="btn btn-danger">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${provedores == null or provedores.empty}">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-info">
+
+                    </tbody>
+                </table>
+                <div>
+                    No hay Provedores Añade provedores aqui por favor   
+                </div>
+            </div>
+        </section>   
+    </body>
+</html>

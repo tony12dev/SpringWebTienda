@@ -1,0 +1,47 @@
+<section th:fragment="agregarEmpleado">
+    <div class="modal fade" id="AgreagarEmpleado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="staticBackdropLabel">Agregar Empleado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/api/empleado/guardar}" th:object="${empleado}" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Nombre</label>
+                            <input class="form-control" name="nombre" type="text" placeholder="Escribe tu nombre" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>Apellidos</label>
+                            <input class="form-control" name="apellidos" type="text" placeholder="Escribe tus Apellidos" required="true">
+                        </div>
+                        <div>
+                            <label>Correo</label>
+                            <input class="form-control" name="correo" type="email" placeholder="Escribe tu email" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>rfc</label>
+                            <input class="form-control" name="rfc" type="text" placeholder="Escribe tu nombre" required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label>Rol</label>
+                            <select  class="form-select" th:field="*{rol}" aria-label="Default select example" required="true">
+                                <option value="" selected >Abre este menú select</option>
+                                <th:block th:each="rol : ${roles}">
+                                    <option th:value="${rol.idRol}"
+                                            th:text="${rol.nombre}">
+                                    </option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+</section>

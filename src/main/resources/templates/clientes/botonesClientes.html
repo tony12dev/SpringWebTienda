@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-securyti">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         
+        <section th:fragment="botonesCliente">
+            <h1 class="titulo-clientes text-center">CLIENTES</h1>
+            <div class="d-grid gap-2 col-6  mb-2">
+                <button class="btn btn-outline-info" type="button" data-bs-toggle="modal" 
+                        data-bs-target="#agregarCliente">
+                    <i class="fas fa-plus"></i>
+                    AgregarCliente
+                </button>
+            </div>
+        </section>
+    </body>
+</html>

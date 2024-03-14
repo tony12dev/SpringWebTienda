@@ -1,0 +1,67 @@
+<html xmlns:th="http://.www.thymeleaf.org">
+    <head th:replace="clientes/plantillas :: head"></head>
+    <body>
+        <div class="container" th:object="${producto}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center text-white Titulo-Detalle-Producto">
+                            <h3> Detalle Producto</h3>
+                            <input type="hidden" name="idCliente" th:field="*{idProducto}"/>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mt-4 producto-detalle">
+                                        <label>Nombre: </label>
+                                        [[${producto.nombre}]]
+                                    </div>          
+                                    <div class=" producto-detalle">
+                                        <label>Contenido Neto: </label>
+                                        [[${producto.contenidoNeto}]]
+                                    </div>
+                                    <div class=" producto-detalle">
+                                        <label>Descripcion: </label>
+                                        [[${producto.Descripcion}]]
+                                    </div>
+                                    <div class="producto-detalle">
+                                        <label>Fecha Caducidad: </label>
+                                        [[${producto.fechaCaducidad}]]
+                                    </div>
+                                    <div class="producto-detalle">
+                                        <label>Precio: </label>
+                                        [[${producto.precio}]]
+                                    </div>
+                                    <div class=" producto-detalle">
+                                        <label>Provedor: </label>
+                                        [[${producto.provedor.nombre}]]
+                                    </div>
+                                    <div class="producto-detalle">
+                                        <label>Categoria: </label>
+                                        [[${producto.categoria.nombre}]]
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ms-5  text-center">
+                                    <a th:href="@{/assets/{filename}(filename=*{imagen})}" data-fancybox>  </a>
+                                    <img th:src="@{/assets/{filename}(filename=*{imagen})}" class="img-thumbnail image-detalle mt-3  img-fluid"
+                                         th:alt="${producto.imagen}">
+                                    <div class="border-2">
+                                        <label>Existencia:</label>
+                                        <div class="producto-detalle">
+                                            [[${producto.existencia}]]
+                                        </div>
+                                    </div>
+                                  
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto m-3">
+                            <a th:href="@{/api/producto}" class="btn btn-outline-primary">Regresar</a>    
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

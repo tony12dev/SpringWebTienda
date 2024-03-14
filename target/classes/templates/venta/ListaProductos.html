@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="clientes/plantillas :: head"></head> 
+    <body>
+        <header th:replace="producto :: header"></header>
+        <header th:replace="clientes/plantillas :: plantillaSimbolos"></header>
+        <section th:replace="venta\MenuVenta ::  menuVenta"></section> 
+        <div class="container">
+            <div class="row text-center">
+                <h2>Lista de Productos</h2>
+                <a th:href="@{/api/venta}" class=" btn btn-info btn-lg">Realizar Venta</a>
+            </div>
+        </div>
+        <section id="moneda">
+            <div class="container-fluid mx-auto mt-2">
+                <div class="row">
+                    <div th:each="producto,cont : ${productos}" class="col-md-4">  
+                        <div class="card text-center mt-2" >
+                            <div class="card-header bg-dark text-white">
+                                <h3 id="productoNombre">[[${producto.nombre}]]</h3>
+                            </div>
+                            <div class="card-body bg-white">                           
+                                <div class="align-items-center mx-auto">
+                                    <img th:src="@{/assets/{filename}(filename=${producto.imagen})}" 
+                                         class="img-thumbnail image-w img-fluid border border-2"
+                                         th:alt="${producto.imagen}" >
+                                </div>
+                                <div class="m-1 border border-2">                            
+                                    <p id="precio">Precio: $</p>
+                                    <span  th:remove="tag"> 
+                                        <p th:text="${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}" id="precio">           
+                                        </p>
+                                    </span> 
+
+                                </div>
+                                <div class="m-1 border border-2">
+                                    Existencia: [[${producto.existencia}]]
+                                </div>
+                                <div class="m-1 border border-2">
+                                    Provedor: [[${producto.provedor.nombre}]]
+                                </div>                               
+                            </div> 
+                        </div>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div sd:pagination-summary="">info</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <nav class="pull-right">
+                            <ul class="pagination" sd:pagination-split="7" sd:pagination="full">
+                                <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+                                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script th:src="@{/js/Moneda.js}" th:inline="javascript"></script>
+    </body>
+</html>

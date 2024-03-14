@@ -1,0 +1,23 @@
+
+<section th:fragment="modificaimagen" th:object="${producto}">
+    <div class="container">
+        <div class="row">
+            <div class="img-modificar">
+                <a th:href="@{/assets/{filename}(filename=*{imagen})}" data-fancybox></a>
+                <img t th:src="@{/assets/{filename}(filename=*{imagen})}" class="img-thumbnail img-fluid"
+                     th:alt="${producto.imagen}">
+            </div>
+        </div>
+        <div class="row">
+            <form th:action="@{/updateimage}" enctype="multipart/form-data"
+                  method="POST">
+                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <div class="imagen-nombre">
+                    Cambiar Imagen:
+                    <input type="file" name="file" id="blah" class="form-control" placeholder="sube tu archivo" required="true">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg mt-2">CambiarImagen</button>
+            </form> 
+        </div>
+    </div> 
+</section>

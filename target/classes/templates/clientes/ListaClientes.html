@@ -1,0 +1,43 @@
+<htmlxmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="clientes/plantillas :: head"></head>
+    <body>
+        <section th:fragment="ListaClientes" id="clientes">           
+                <div class="container">
+                    <div class="row">
+                   <div th:if="${clientes != null and !clientes.empty}">
+                        <table border="1" class="table table-hover text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Direccion</th>
+                                    <th>Email</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-info">
+                                <tr th:each="cliente,cont: ${clientes}"> <!-- Expression Language --> 
+                                    <td>[[${cont.count}]]</td>
+                                    <td>[[${cliente.nombre}]] [[${cliente.apellidoP}]] [[${cliente.apellidoM}]]</td> 
+                                    <td>[[${cliente.direccion}]]</td>
+                                    <td>[[${cliente.email}]]</td>
+                                    <td>
+                                        <a th:href="@{/api/cliente/editar/} + ${cliente.idCliente}"
+                                           class="btn btn-success" >Editar</a>
+                                        <a th:href="@{/api/cliente/eliminar(idCliente=${cliente.idCliente})}"
+                                           class="btn btn-danger" >Eliminar</a>
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div th:if="${clientes == null or clientes.empty}">
+                        <span>La lista esta vacia</span>
+                        La lista esta Vacias
+                    </div>
+                </div>
+            </div>
+           </section>
+    </body>
+</html>

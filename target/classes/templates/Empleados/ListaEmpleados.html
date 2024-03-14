@@ -1,0 +1,72 @@
+<section th:fragment="listaEmpleado">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center align-items-center mt-2">            
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                        data-bs-target="#AgreagarEmpleado" style="width: 85%">
+                    Agregar Empleado
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div th:if="${empleados != null and !empleados.empty}">
+                <div th:if="${mensaje != null}">
+                    <div class="alert alert-primary alert-dismissible fade show align-items-center m-0" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <span>[[${mensaje}]]</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
+                    </div>
+                </div>    
+                <table class="table text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>RFC</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover bg-light">
+                        <tr th:each="empleado,cont : ${empleados}">
+                            <td>[[${cont.count}]]</td>
+                            <td>[[${empleado.nombre}]] [[${empleado.apellidos}]]</td>
+                            <td>[[${empleado.correo}]]</td>
+                            <td>[[${empleado.rfc}]]</td>
+                            <td>[[${empleado.rol.nombre}]]</td>
+                            <td>
+                                <a th:href="@{/api/empleado/editar} + ${empleado.idEmpleado}" class="btn btn-success">Editar</a>
+                                
+                                <a th:href="@{/api/empleado/eliminar(idEmpleado=${empleado.idEmpleado})}" class="btn btn-danger">Eliminar</a>
+                            </td>
+
+                        </tr>
+                    </tbody> 
+                </table>
+            </div>
+            <div th:if="${empleados == null or empleados.empty}">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>RFC</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="text-center">
+                    <h1>No hay empleados</h1>
+                    <img src="https://cdn-icons-png.flaticon.com/512/69/69643.png" alt="alt"/>
+                </div>
+                </tbody>
+
+            </div>
+        </div>
+    </div>  
+</section>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section th:fragment="ListaProducto">
+            <h2 class="text-center">Productos</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="d-grid gap-2 col-6  mb-2">
+                        <a class="btn btn-outline-info  butadd-provedor mb-2" 
+                           data-bs-toggle="modal"  data-bs-target="#agregarProducto">
+                            <i class="fa-solid fa-truck-field-un icon-provedor"></i>
+                            AGREGAR Producto
+                        </a>            
+                    </div>
+                    <div class="d-grid gap-2 col-4  mb-2">
+                        <a class="btn btn-outline-info  butadd-provedor mb-2" 
+                           data-bs-toggle="modal"  data-bs-target="#agregarCategoria">
+                            <i class="fa-sharp fa-solid fa-circle-plus"></i>
+                            AGREGAR Categoria
+                        </a>            
+                    </div>
+                </div>
+            </div>
+            <div th:if="${productos != null and !productos.empty}">
+                <div th:if="${mensaje != null}">
+                    <div class="alert alert-primary alert-dismissible fade show align-items-center m-0" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <span>[[${mensaje}]]</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
+                    </div>
+                </div> 
+                <table class=" table  table-hover text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Contenido</th> 
+                            <th>Precio</th>
+                            <th colspan="2">Existencias</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-info">
+                        <tr th:each="producto,cont : ${productos}">
+                            <td>[[${cont.count}]]</td>
+                            <td>[[${producto.nombre}]]</td>
+                            <td>[[${producto.categoria.nombre}]]</td>
+                            <td>[[${producto.contenidoNeto}]]</td>
+                            <td>[[${producto.precio}]]</td>
+                            <td class="celda-exsitencia2">[[${producto.existencia}]]</td>
+
+                            <td class="ms-0 celda-exsitencia" >
+                                <a class="btn btn-danger "
+                                   th:href="@{/api/producto/existencia/} + ${producto.idProducto}"
+                                   th:data-idProducto="${producto.idProducto}" th:data-nombre="${producto.nombre}"
+                                   th:data-existencia="${producto.existencia}"
+                                   data-bs-toggle="modal" data-bs-target="#ActualizarStock" 
+                                   onclick="abrirModal(this)" >
+                                    <i class="fa-solid fa-plus"></i></a>
+                            </td>
+
+                            <td>
+                                <a th:href="@{/api/producto/editar/} + ${producto.idProducto}"
+                                   class="btn btn-success">Modificar</a>
+
+                                <a th:href="@{/api/producto/detalle/} + ${producto.idProducto}"
+                                   class="btn btn-info">Detalles</a>
+
+                                <a class="btn btn-danger" 
+                                   th:data-idProducto="${producto.idProducto}" 
+                                   th:data-nombre="${producto.nombre}"
+                                   onclick="abrirModalEliminar(this)">Eliminar</a>  
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${productos == null or productos.empty}">
+                <table class=" table table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>FechaCaducidad</th>
+                        <th>Contenido</th> 
+                        <th>Precio</th>
+                        <th>Provedor</th>
+                    </tr>
+                </table>
+                <div class="text-center">
+                    <img  src="https://cdn-icons-png.flaticon.com/512/4961/4961667.png" alt="alt"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div sd:pagination-summary="">info</div>
+                </div>
+                <div class="col-sm-6">
+                    <nav class="pull-right">
+                        <ul class="pagination" sd:pagination-split="7" sd:pagination="full">
+                            <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </section>
+
+        <footer th:replace="clientes/plantillas :: footer"></footer> 
+    </body>
+</html>
+<!--<td>[[${producto.provedor.nombre}]]</td>-->

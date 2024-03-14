@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+    <head th:replace="clientes/plantillas :: head"></head>
+</head>
+<body>
+    <div class="container">
+        <form class="form" th:action="@{/api/provedor/guardar}" method="POST" th:object="${provedor}">
+            <input type="hidden" name="idProvedor" th:field="*{idProvedor}"/>
+            <div class="mb-3">
+                <label for="nombre">Nombre:</label>
+                <input name="nombre" class="form-control" th:field="*{nombre}" placeholder="Escribe tu Nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion">Direccion:</label>
+                <input name="direccion" class="form-control" th:field="*{direccion}" placeholder="Escribe tu Direccion" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono">Telefono:</label>
+                <input name="telefono" class="form-control" th:field="*{telefono}" placeholder="Escribe tu telefono" required>
+            </div>
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input name="email" class="form-control" th:field="*{email}" placeholder="Escribe tu email" required>
+            </div>
+            <div class="mb-3">
+                <label for="email">RFC:</label>
+                <input name="rfc" class="form-control" th:field="*{rfc}" placeholder="Escribe tu rfc" required>
+            </div>
+            <div class="mb-3">
+                <label for="observaciones">Observaciones:</label>
+                <textarea class="form-control" id="observaciones" th:field="*{observaciones}" name="observaciones" rows="5" cols="10" required></textarea> 
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success mt-2">Guardar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

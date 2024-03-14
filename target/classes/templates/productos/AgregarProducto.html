@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section th:fragment="agregarProducto">
+            <!-- Modal -->
+
+            <div class="modal fade" id="agregarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title" id="staticBackdropLabel">Agregar Producto</h5>
+                            <button type="button" class="btn-close btn-info bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form th:action="@{/api/producto/guardar}" enctype="multipart/form-data" th:object="${producto}" method="POST">
+                            <div class="modal-body bg-light">
+                                <div class="row g-3">
+                                    <div class="col"> 
+                                        <label>Nombre</label>
+                                        <input type="text" name="nombre" class="form-control" placeholder="Escribe tu nombre" required="true">
+                                    </div> 
+                                    <div class="col">
+                                        <label>contenidoNeto</label>
+                                        <input type="text" name="contenidoNeto" class="form-control" placeholder="Escribe el contenido" required="true">
+                                    </div>
+                                </div>     
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label>fechaCaducidad</label>
+                                        <input type="date" name="fechaCaducidad" class="form-control" placeholder="Escribe tu nombre"  required="true" > 
+                                    </div>
+                                    <div class="col">
+                                        <label>Precio</label>
+                                        <input type="text" name="precio" class="form-control" placeholder="Escribe el precio" step="0.01" required="true">
+                                    </div>
+                                    <div class="col">
+                                        <label>Cantidad</label>
+                                        <input type="number" name="existencia" class="form-control" placeholder="escribe la existencia" required="true">
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label>Descripcion</label>
+                                    <input type="text" name="descripcion" class="form-control" placeholder="descripcion" required="true">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label>Imagen</label>
+                                    <input type="file" name="file" class="form-control" placeholder="sube tu archivo" required="true">
+                                </div>
+
+                                <div class="row g-3"> 
+                                    <div class="col">
+                                        <label>Provedor</label>
+                                        <select class="form-select" th:field="*{provedor}"   aria-label="Default select example" required="true">
+                                            <option value="" selected >Abre este menú select</option>
+                                            <th:block th:each="provedor : ${provedores}">
+                                                <option th:value="${provedor.idProvedor}"
+                                                        th:text="${provedor.nombre}">                                                  
+                                                </option>
+                                            </th:block>
+                                        </select> 
+                                    </div>
+
+                                    <div class="col">
+                                        <label>Categoria</label>
+                                        <select class="form-select" th:field="*{categoria}"   aria-label="Default select example" required="true">
+                                            <option value="" selected >Abre este menú select</option>
+                                            <th:block th:each="categoria : ${categoria}">
+                                                <option th:value="${categoria.idCategoria}"
+                                                        th:text="${categoria.nombre}">                                                  
+                                                </option>
+                                            </th:block>
+                                        </select> 
+                                    </div>
+
+                                </div>    
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+
+                        </form>     
+
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </body>
+</html>

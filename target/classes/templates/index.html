@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="clientes/plantillas :: head"></head>
+    <body style="background-color: aquamarine">
+        <div>
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand titulo-barra text-danger"  href="#">
+                        <img src="https://images.vexels.com/media/users/3/223366/isolated/preview/ea1356112df2010476093a06adc68532-dise-o-plano-de-icono-de-tienda.png" 
+                             alt="" width="36" height="34" class="d-inline-block align-text-top">
+                        TIENDASPRING
+                    </a>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 m-0">
+                        <section th:fragment="menu-lateral">
+                            <div class="card">
+                                <div class="card-body">
+                                    <section th:replace="clientes/navegador :: clientes"></section> 
+                                    <section th:replace="clientes/navegador :: empleados"></section>
+                                    <section th:replace="clientes/navegador :: productos"></section>
+                                    <setion th:replace="clientes/navegador  :: provedor"></setion>
+                                    <section th:replace="clientes/navegador :: venta"></section>
+                                </div>                            
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="container-fluid" id="formclientes">
+                            <div class="row">
+                                Bienvenidos
+                                <img src="https://dpilaser.com/wp-content/uploads/2017/01/Bienvenido.png" alt="Bienvenidos"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <footer th:replace="clientes/plantillas :: footer"></footer> 
+    </body>
+</html>

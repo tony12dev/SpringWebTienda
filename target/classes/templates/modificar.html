@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmnls="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>EditarCliente</div>
+         <form th:action="@{/api/cliente/guardar}" method="POST" th:object="${cliente}">
+             <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+            <h2>Formulario de guardar</h2>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" th:field="*{nombre}" required="true"><br><br>
+            <label for="apellidoP">ApellidoP</label>
+            <input type="text" name="apellidoP" th:field="*{apellidoP}"  required="true" ><br><br>
+            <label for="apellidoM">ApellidoM</label>
+            <input type="text" name="apellidoM" th:field="*{apellidoM}"  required="true" ><br><br>
+            <label for="nombre">Direccion</label>
+            <input type="text" name="direccion" th:field="*{direccion}"  required="true" ><br><br>
+            <label for="nombre">email</label>
+            <input type="text" name="email" th:field="*{email}" required="true" ><br><br>
+            <label for="nombre">Telefono</label>
+            <input type="text" name="telefono" th:field="*{telefono}"  required="true" ><br><br>
+            <button type="submit" value="Guardar">
+                Guardar
+            </button>
+        </form>
+    </body>
+</html>
